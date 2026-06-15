@@ -1,0 +1,11 @@
+version: '3.8'
+
+services:
+  backend:
+    build: .
+    container_name: aurabuy_backend_node
+    ports:
+      - "8081:8081"
+    env_file:
+      - .env
+    restart: always
