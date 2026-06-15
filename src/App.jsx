@@ -14,7 +14,11 @@ const ProtectedRoute = ({ children, requireAdmin }) => {
   const { user, loading } = useAuth();
 
   if (loading) {
-    return null;
+    return (
+      <div className="min-h-screen flex items-center justify-center bg-slate-950 text-white">
+        <p className="text-sm tracking-[0.3em] uppercase text-gold">Loading...</p>
+      </div>
+    );
   }
 
   if (!user) {
@@ -30,7 +34,7 @@ const ProtectedRoute = ({ children, requireAdmin }) => {
 
 const App = () => {
   return (
-    <Router>
+    <Router basename={import.meta.env.BASE_URL}>
       <Routes>
         {/* Public routes wrapped in MainLayout */}
         <Route path="/" element={<MainLayout />}>
